@@ -6,7 +6,7 @@ const getEnvironmentConfig = () => {
   // 기본 설정
   const config = {
     development: {
-      apiUrl: 'http://localhost:5000',
+      apiUrl: 'http://localhost:3001',
       clientUrl: 'http://localhost:5173',
     },
     production: {
