@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { FaUser, FaEnvelope, FaCalendarAlt, FaShieldAlt, FaSignOutAlt, FaCog, FaClipboardList } from 'react-icons/fa';
@@ -161,8 +161,13 @@ const AvatarPlaceholder = styled.div`
 `;
 
 function DashboardPage() {
-  const { user, logout, isAdmin } = useAuth();
+  const { user, logout, isAdmin, checkAuthStatus } = useAuth();
   const navigate = useNavigate();
+
+  // 페이지 로드 시 인증 상태 재확인 (OAuth 리다이렉트 후 필요)
+  useEffect(() => {
+    checkAuthStatus();
+  }, []);
 
   const handleLogout = async () => {
     await logout();
